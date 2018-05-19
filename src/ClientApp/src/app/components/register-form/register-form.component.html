@@ -1,0 +1,109 @@
+<div class="mid-screen">
+    <mat-card>
+        <mat-card-header>
+            <mat-toolbar color="primary" style="max-height:30px;" fxLayoutAlign="center center">
+                <span>Register now!</span>
+            </mat-toolbar>
+        </mat-card-header>
+        <mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper">
+            <mat-step [stepControl]="RoleFormGroup">
+                <form [formGroup]="RoleFormGroup">
+                    <ng-template matStepLabel>Mark your role</ng-template>
+                    <mat-radio-group [(ngModel)]="NewUser.Role" formControlName="firstCtrl" required>
+                        <mat-radio-button color="primary" value="Student" style="display:inline-flex;flex-direction: column;padding-bottom: 10px">Student</mat-radio-button>
+                        <br>
+                        <mat-radio-button color="primary" value="OfficeWorker" style="display:inline-flex;flex-direction: column;">Office Worker</mat-radio-button>
+                    </mat-radio-group>
+                    <div fxflexlayout="row" fxLayoutAlign="space-around center">
+                        <button mat-raised-button color="primary" matStepperNext>Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="DataFormGroup">
+                <form [formGroup]="DataFormGroup">
+                    <ng-template matStepLabel>Fill out your name and ID</ng-template>
+                    <div fxFlexLayout="column">
+                        <mat-form-field style="width:45%">
+                            <input matInput placeholder="First Name" formControlName="FirstNameCtrl" [(ngModel)]="NewUser.FirstName" required>
+                        </mat-form-field>
+                        <mat-form-field style="width:45%">
+                            <input matInput placeholder="Last Name" formControlName="LastNameCtrl" [(ngModel)]="NewUser.LastName" required>
+                        </mat-form-field>
+                        <mat-form-field style="width:45%">
+                            <input matInput placeholder="ID" formControlName="CardNumberCtrl" [(ngModel)]="NewUser.CardNumber" required>
+                        </mat-form-field>
+                    </div>
+                    <div fxflexlayout="row" fxLayoutAlign="space-around center">
+                        <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+                        <button mat-raised-button color="primary" matStepperNext>Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="AddressFormGroup">
+                <form [formGroup]="AddressFormGroup">
+                    <ng-template matStepLabel>Fill out contact to you</ng-template>
+                    <div fxFlexLayout="column">
+                        <div>
+                            <mat-form-field style="width:45%">
+                                <input matInput placeholder="Street" formControlName="streetCtrl" [(ngModel)]="NewUser.Address.Street" required>
+                            </mat-form-field>
+                            <mat-form-field style="width:45%">
+                                <input matInput placeholder="House Number" formControlName="houseNumberCtrl" [(ngModel)]="NewUser.Address.HouseNumber" required>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field style="width:45%">
+                                <input matInput placeholder="City" formControlName="CityCtrl" [(ngModel)]="NewUser.Address.City" required>
+                            </mat-form-field>
+                            <mat-form-field style="width:45%">
+                                <input matInput placeholder="Zip Code" formControlName="ZipCodeCtrl" [(ngModel)]="NewUser.Address.ZipCode" required>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field style="width:45%">
+                                <input matInput placeholder="Email" formControlName="EmailCtrl" [(ngModel)]="NewUser.Email" required email>
+                            </mat-form-field>
+                            <mat-form-field style="width:45%">
+                                <input matInput placeholder="Phone Number" formControlName="PhoneNumberCtrl" [(ngModel)]="NewUser.PhoneNumber" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div fxflexlayout="row" fxLayoutAlign="space-around center">
+                        <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+                        <button mat-raised-button color="primary" matStepperNext>Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="PasswordFormGroup">
+                <form [formGroup]="PasswordFormGroup">
+                    <ng-template matStepLabel>Enter your password</ng-template>
+                    <div fxFlexLayout="column">
+                        <div>
+                            <mat-form-field style="width:45%">
+                                <input matInput type="password" placeholder="Password" formControlName="PasswordCtrl" [(ngModel)]="NewUser.Password" required>
+                            </mat-form-field>
+                            <mat-form-field style="width:45%">
+                                <input matInput type="password" placeholder="Confirm Password" formControlName="ConfirmPasswordCtrl" pattern="{{NewUser.Password}}" required >
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div fxflexlayout="row" fxLayoutAlign="space-around center">
+                        <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+                        <button mat-raised-button color="primary" matStepperNext>Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Done</ng-template>
+                <div fxLayoutAlign="space-around center">
+                    <span style="text-align:center">Check your entered data. If they are correct click Save, or go back and correct them.</span>
+                </div>
+                <div fxLayoutAlign="space-around center" style="padding-top:30px">
+                    <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+                    <button mat-raised-button color="primary" (click)="stepper.reset()">Reset</button>
+                    <button mat-raised-button color="primary" (click)="register()">Save</button>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </mat-card>
+</div>

@@ -1,0 +1,26 @@
+<div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="space-around center" style="padding-top:5vh;">
+    <div>
+        <button mat-raised-button color="primary">
+            <span *ngIf="user.Declaration==null">
+                Dodaj deklaracje
+            </span>
+            <span *ngIf="user.Declaration!=null">
+                Edit declaration
+            </span>
+        </button>
+    </div>
+    <div>
+        <p class="header">Date of Dissertation:</p>
+        <p>{{user.Declaration.Date|date:'shortTime'}} {{user.Declaration.Date|date:'longDate'}}</p>
+    </div>
+    <div>
+        <p class="header">Lecture Room of Dissertation:</p>
+        <p>{{user.Declaration.Room}}</p>
+    </div>
+    <div>
+        <p class="header">List of Documents</p>
+        <div *ngFor="let document of user.Declaration.ListOfDocuments">
+            <a target="_blank" href="/assets/{{user.Id}}/{{document}}">{{document}}</a>
+        </div>
+    </div>
+</div>

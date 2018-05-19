@@ -1,0 +1,18 @@
+.full-screen {
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+    min-width: 100%;
+}
+.mid-screen{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 20em;
+    height: 18em;
+    margin-top: -9em; /*set to a negative number 1/2 of your height*/
+    margin-left: -10em; /*set to a negative number 1/2 of your width*/
+}
+.full-width {
+    width:100%;
+}

@@ -1,0 +1,20 @@
+<mat-card style="height:90vh;overflow-y:scroll;">
+    <mat-toolbar color="primary">
+        <div fxLayout="row" fxLayoutAlign="space-around center" style="width:100%;">
+            <button mat-button  routerLink="declarations">
+                <mat-icon>assignment</mat-icon>
+                My Declarations
+            </button>
+
+            <button mat-button routerLink="profile">
+                <mat-icon>person</mat-icon>
+                My Profile
+            </button>
+            <button mat-button (click)="Logout()">
+                <mat-icon>exit_to_app</mat-icon>
+                Logout
+            </button>
+        </div>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+</mat-card>

@@ -1,0 +1,49 @@
+<div fxLayout="row"  fxLayoutAlign="space-around">
+    <div fxLayout="column">
+        <div>
+            <p class="header">First Name:</p>
+            <p>{{user.FirstName}}</p>
+        </div>
+        <div>
+            <p class="header">Card Number</p>
+            <p>{{user.CardNumber}}</p>
+        </div>
+        <div>
+            <p class="header">Phone Number:</p>
+            <p>{{user.PhoneNumber}}</p>
+        </div>
+    </div>
+    <div fxLayout="column">
+        <div>
+            <p class="header">Last Name:</p>
+            <p>{{user.LastName}}</p>
+        </div>
+        <div>
+            <p class="header">Email:</p>
+            <p>{{user.Email}}</p>
+        </div>
+    </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="space-around">
+    <div fxLayout="column">
+        <div>
+            <p class="header">Street:</p>
+            <p>{{user.Address.Street}}</p>
+        </div>
+
+        <div>
+            <p class="header">City:</p>
+            <p>{{user.Address.City}}</p>
+        </div>
+    </div>
+    <div fxLayout="column">
+        <div>
+            <p class="header">House Number:</p>
+            <p>{{user.Address.HouseNumber}}</p>
+        </div>
+        <div>
+            <p class="header">Zip-Code:</p>
+            <p>{{user.Address.ZipCode}}</p>
+        </div>
+    </div>
+</div>
