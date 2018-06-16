@@ -1,7 +1,13 @@
-import { UserResource } from './user.resource';
+import {UserResource} from './user.resource';
+import {DocumentResource} from "./document.resource";
 
 export class DeclarationResource {
-    Date = new Date();
-    Room: string;
-    ListOfDocuments: Array<string> = [];
+
+    id: number;
+    User: UserResource;
+    Status: string;
+    date = new Date();
+    time = new Date();
+    room: string;
+    documentCommands: Array<DocumentResource>;
 }

@@ -1,0 +1,61 @@
+<div *ngIf="user!=null">
+    <div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="space-around center" style="padding-top:5vh;">
+        <div>
+            <button mat-raised-button color="primary" routerLink="create">
+            <span *ngIf="user.declarationCommand==null">
+                Dodaj deklaracje
+            </span>
+                <span *ngIf="user.declarationCommand!=null">
+                Edit declaration
+             </span>
+            </button>
+        </div>
+        <div *ngIf="user.declarationCommand!=null">
+            <div fxLayout="row" fxLayoutAlign="space-around">
+                <div>
+                    <p class="header">Data:</p>
+                    <p style="text-align: center">{{user.declarationCommand.date}}</p>
+                </div>
+                <div>
+                    <p class="header">Godzina :</p>
+                    <p style="text-align: center">{{user.declarationCommand.time}}</p>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-around">
+                <div>
+                    <p class="header">Sala :</p>
+                    <p style="text-align: center">{{user.declarationCommand.room}}</p>
+                </div>
+
+                <div>
+                    <p class="header">Status:</p>
+                    <p style="text-align: center">{{user.declarationCommand.status}}</p>
+                </div>
+            </div>
+            <div *ngIf="user.declarationCommand.documentCommands">
+                <p class="header" style="width: 600px">Dokumenty:</p>
+                <div *ngFor="let document of user.declarationCommand.documentCommands">
+                    <div fxLayout="row" fxLayoutAlign="space-between">
+                        <span style="text-align: center">{{document.displayName}}:</span>
+                        <span style="cursor:pointer;color:blue;text-decoration:underline;text-align: center"
+                              (click)="downloadFile(document)"> {{document.fileName}}</span>
+                    </div>
+                </div>
+            </div>
+            <form class="example-form" [formGroup]="form">
+                <div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="space-around center"
+                     style="padding-top:5vh;padding-bottom: 5vh">
+                    <div fxLayout="row" fxLayoutAlign="space-around" *ngIf="expanded">
+                        <mat-form-field class="example-full-width" style="width: 300px;">
+                            <input matInput placeholder="Wyświetlana nazwa" value="" formControlName="name" id="name">
+                        </mat-form-field>
+                        <input placeholder="Plik" type="file" id="file" (change)="onFileChange($event)"
+                               style="width: 300px;position: relative;top: 25px;left:10px" #fileInput>
+                    </div>
+                    <button mat-raised-button color="primary" (click)="onSubmit()"> Dodaj dokumenty
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

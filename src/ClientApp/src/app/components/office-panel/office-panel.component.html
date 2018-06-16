@@ -1,18 +1,19 @@
 <mat-card style="height:90vh;overflow-y:scroll;">
     <mat-toolbar color="primary">
         <div fxLayout="row" fxLayoutAlign="space-around center" style="width:100%;">
-            <button mat-button  routerLink="declarations">
-                <mat-icon>assignment</mat-icon>
-                Moje Deklaracje
+            <button mat-button  routerLink="terms">
+                <mat-icon>access_time</mat-icon>
+                 Terminy pracy komisji
             </button>
 
-            <button mat-button routerLink="profile">
-                <mat-icon>person</mat-icon>
-                Mój profil
+            <button mat-button  routerLink="declarations">
+                <mat-icon>assignment_ind</mat-icon>
+                Deklaracje
             </button>
+
             <button mat-button (click)="Logout()">
                 <mat-icon>exit_to_app</mat-icon>
-                Wyloguj się
+                Wyloguj
             </button>
         </div>
     </mat-toolbar>

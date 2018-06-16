@@ -1,0 +1,53 @@
+<div *ngIf="terms!=null">
+    <div class="example-container mat-elevation-z8">
+        <mat-table #table [dataSource]="dataSource" matSort>
+            <!-- Position Column -->
+            <ng-container matColumnDef="Id">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> No.</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.Id}}</mat-cell>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="Room">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Sala</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.room}}</mat-cell>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="Date">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Data</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.date|date}}</mat-cell>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="StartTime">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Czas Początkowy</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.StartTime}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="EndTime">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Czas Końcowy</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.EndTime}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="Interval">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Przerwa pomiędzy obronami</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.Interval}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="edit">
+                <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <mat-icon style="cursor:pointer" [routerLink]="[element.Id,'update']">edit</mat-icon>
+                    <mat-icon style="cursor:pointer" (click)="delete(element.Id)">delete</mat-icon>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+
+    <div fxLayoutAlign="center center" style="padding-top:50px">
+        <button mat-raised-button routerLink="create">Zapisz</button>
+    </div>
+</div>

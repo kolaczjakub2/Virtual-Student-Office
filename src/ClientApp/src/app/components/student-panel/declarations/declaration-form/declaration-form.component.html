@@ -1,0 +1,57 @@
+<mat-card>
+    <form>
+        <mat-form-field style="width:45%">
+            <mat-select placeholder="Wybierz sale" [(ngModel)]="selectedRoom" name="room" (change)="onChangeRoom()">
+                <mat-option *ngFor="let room of rooms" [value]="room">
+                    {{room}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field style="width:45%" *ngIf="selectedRoom">
+            <mat-select placeholder="Wybierz dzien" [(ngModel)]="selectedDate" name="date" (change)="onChangeDate()">
+                <mat-option *ngFor="let date of dates" [value]="date">
+                    {{date}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+
+    <div *ngIf="declarations">
+        <mat-table #table [dataSource]="dataSource" matSort>
+            <!-- Position Column -->
+            <ng-container matColumnDef="Id">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> No.</mat-header-cell>
+                <mat-cell *matCellDef="let element; let i=index;">{{i+1}}</mat-cell>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="Room">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Sala</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.room}}</mat-cell>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="Date">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Data</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.date|date}}</mat-cell>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="Time">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Godzina</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.time}}</mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="edit">
+                <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <mat-icon style="cursor:pointer" (click)="assignUser(element.id)">check_box</mat-icon>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row;  columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+</mat-card>

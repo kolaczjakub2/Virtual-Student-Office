@@ -1,0 +1,68 @@
+<mat-card>
+    <form>
+        <mat-form-field style="width:45%">
+            <mat-select placeholder="Wybierz sale" name="room" multiple (change)="onChangeRoom()"
+                        [(ngModel)]="selectedRooms">
+                <mat-option *ngFor="let room of rooms" [value]="room">{{room}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field style="width:45%" *ngIf="selectedRooms!=null">
+            <mat-select placeholder="Wybierz dzien" name="date" multiple
+                        [(ngModel)]="selectedDates">
+                <mat-option *ngFor="let date of dates" [value]="date">{{date}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+
+    <div *ngIf="usersWithDeclarations!=null && selectedRooms!=null && selectedDates!=null">
+        <div *ngFor="let room of selectedRooms">
+            <div *ngFor="let date of selectedDates">
+                <div *ngIf="checkUsers(date,room)">
+                    <h2>Sala :{{room}}</h2>
+                    <h3>Data:{{date}}</h3>
+                    <div class="example-container mat-elevation-z8">
+                        <mat-table #table [dataSource]="getDataSource(date,room)" matSort>
+                            <!-- Position Column -->
+                            <ng-container matColumnDef="Index">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> No.</mat-header-cell>
+                                <mat-cell *matCellDef="let element; let i=index;">{{i+1}}</mat-cell>
+                            </ng-container>
+
+                            <!-- Name Column -->
+                            <ng-container matColumnDef="FirstName">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> Imię</mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.firstName}}</mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="LastName">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> Nazwisko</mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.lastName}}</mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="Time">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> Czas</mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.declarationCommand.time}}</mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="Documents">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> Dokumenty</mat-header-cell>
+                                <mat-cell *matCellDef="let element">
+                                    <div *ngIf="element.declarationCommand.documentCommands"></div>
+                                    <div *ngFor="let document of element.declarationCommand.documentCommands">
+                                        <div fxLayout="row" fxLayoutAlign="space-between">
+                                        <span
+                                            style="cursor:pointer;color:blue;text-decoration:underline;text-align: center"
+                                            (click)="downloadFile(document)"> {{document.fileName}}</span>
+                                        </div>
+                                    </div>
+                                </mat-cell>
+                            </ng-container>
+                            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                        </mat-table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div fxLayoutAlign="center center" style="padding-top:15px">
+            <button mat-raised-button color="primary" (click)="downloadPDF()">Pobierz deklaracje jako pdf</button>
+        </div>
+    </div>
+</mat-card>

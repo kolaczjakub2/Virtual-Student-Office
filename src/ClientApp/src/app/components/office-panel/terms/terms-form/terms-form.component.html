@@ -1,0 +1,22 @@
+<form>
+    <div fxFlexLayout="column"  style="padding-top: 5vh">
+        <mat-form-field style="width:45%">
+            <input matInput placeholder="Room" name="Sala" [(ngModel)]="term.room" required>
+        </mat-form-field>
+        <mat-form-field style="width:45%; float: right;">
+            <input type="date" matInput placeholder="Data" name="Date" [(ngModel)]="term.date" required>
+        </mat-form-field>
+        <mat-form-field style="width:45%">
+            <input type="time" matInput placeholder="Czas Startowy" name="Start_Time" [(ngModel)]="term.StartTime" required>
+        </mat-form-field>
+        <mat-form-field style="width:45%; float: right;">
+            <input type="time" matInput placeholder="Czas Końcowy" name="End_Time" [(ngModel)]="term.EndTime" required>
+        </mat-form-field>
+        <mat-form-field style="width:45%;">
+            <input type="number" matInput placeholder="Czas trwania obrony" name="Interval"  [(ngModel)]="term.interval" required>
+        </mat-form-field>
+    </div>
+    <div fxflexlayout="row" fxLayoutAlign="space-around center">
+        <button mat-raised-button color="primary" (click)="saveTerm()" >Zapisz</button>
+    </div>
+</form>

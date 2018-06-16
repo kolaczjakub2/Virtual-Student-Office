@@ -10,6 +10,6 @@ export class UserResource {
     Email: string;
     PhoneNumber: number;
     Password: string;
-    Address: AddressResource = new AddressResource();
-    Declaration: DeclarationResource;
+    AddressCommand: AddressResource = new AddressResource();
+    declarationCommand: DeclarationResource;
 }

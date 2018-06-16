@@ -1,0 +1,51 @@
+<div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="space-around center" style="padding-top:5vh;">
+    <div fxLayout="row" fxLayoutAlign="space-around">
+        <div>
+            <div>
+                <p class="header">Imię:</p>
+                <p style="text-align: center">{{user.FirstName}}</p>
+            </div>
+            <div>
+                <p class="header">Numer Indeksu</p>
+                <p style="text-align: center">{{user.CardNumber}}</p>
+            </div>
+            <div>
+                <p class="header">Numer Telefonu:</p>
+                <p style="text-align: center">{{user.PhoneNumber}}</p>
+            </div>
+        </div>
+        <div>
+            <div>
+                <p class="header">Nazwisko:</p>
+                <p style="text-align: center">{{user.LastName}}</p>
+            </div>
+            <div>
+                <p class="header">Email:</p>
+                <p style="text-align: center">{{user.Email}}</p>
+            </div>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-around">
+        <div>
+            <div>
+                <p class="header">Ulica:</p>
+                <p style="text-align: center">{{user.AddressCommand.Street}}</p>
+            </div>
+
+            <div>
+                <p class="header">Miasto:</p>
+                <p style="text-align: center">{{user.AddressCommand.City}}</p>
+            </div>
+        </div>
+        <div>
+            <div>
+                <p class="header">Numer Domu:</p>
+                <p style="text-align: center">{{user.AddressCommand.HouseNumber}}</p>
+            </div>
+            <div>
+                <p class="header">Kod Pocztowy:</p>
+                <p style="text-align: center">{{user.AddressCommand.ZipCode}}</p>
+            </div>
+        </div>
+    </div>
+</div>

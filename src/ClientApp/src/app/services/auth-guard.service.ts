@@ -7,7 +7,7 @@ export class AuthGuardService {
     constructor(private router: Router) { }
 
     canActivate() {
-        if (localStorage.getItem('currentUser')) {
+        if (localStorage.getItem('userId')) {
             console.log('Access granted');
             return true;
         }
